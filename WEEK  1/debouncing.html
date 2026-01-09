@@ -1,0 +1,87 @@
+<html>
+    <body>
+        <input
+            id = "firstnumber"
+            type = "text"
+            placeholder="firstnumber"
+            oninput="debounceee()">
+            <br></br>
+
+         <input
+            id = "secondnumber"
+            type = "text"
+            placeholder="secondnumber"
+            oninput="debounceee"
+            >
+            <br></br>
+
+        <div id="finalsum"> </div>
+
+
+        <script>
+            
+            let timeout;
+
+            function debounceee(){
+                clearTimeout(timeout);
+
+                timeout = setTimeout(() => {
+                    trial();
+                }, 1000);
+            }
+
+            async function trial() {
+
+                const a = document.getElementById("firstnumber").value;
+                const b = document.getElementById("secondnumber").value;
+
+                const res = await fetch(
+                    "https://sum-server.100xdevs.com/sum?a=" + a + "&b=" + b);
+
+                const ans = await res.text();
+                document.getElementById("finalsum").innerHTML = ans;
+            }
+
+//             let timeout;
+// Stores the current timer ID
+
+// Needed so it can be cancelled
+
+// 2. Function called on every keystroke
+// js
+// Copy code
+// function debouncePopulateDiv() {
+// This function runs every time the user types.
+
+// 3. Cancel the previous timer
+// js
+// Copy code
+// clearTimeout(timeout);
+// Cancels the previously scheduled execution
+
+// This prevents the function from running early
+
+// This is the core of debouncing.
+
+// 4. Schedule a new execution
+// js
+// Copy code
+// timeout = setTimeout(function () {
+//   populateDiv();
+// }, 1000);
+// Starts a new timer
+
+// If no new keystroke happens for 1000ms
+
+// populateDiv() executes
+
+// If a new keystroke happens:
+
+// clearTimeout runs
+
+// Timer resets
+        </script>
+
+    </body>
+
+</html>
