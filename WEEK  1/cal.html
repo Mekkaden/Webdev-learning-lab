@@ -1,0 +1,40 @@
+
+<html> 
+    <script>
+        //function populatediv(){
+            //we r using the document stuff to manipulate data;
+            //this hai is a dom object only, not text not string anything its a dom object\
+           // const a = document.getElementById("firstnumber").value
+            //const b = document.getElementById("secondnumber").value;
+            //const hai = document.getElementById("finalsum");
+            // hai.innerHTML = a + b;  now this gives me string + string is just the 2 strings appended
+            //hai.innerHTML  = parseInt(a) + parseInt(b);
+            //but as in the above isnt whats happening the most time, most of the time whats happening is instead of a function there we are hitting a backend server and getting the result we want
+
+            //fetch() = “Ask the browser to make an HTTP request and give me a Promise.”
+            //fetch is what we use to hit the backend
+
+        async function populatediv2(){ 
+        //async function means it returns a promise
+            const a  = document.getElementById("firstnumber").value;
+            const b  = document.getElementById("secondnumber").value;
+
+            const res = await fetch(
+                "https://sum-server.100xdevs.com/sum?a=" + a + "&b=" + b);
+            const ans = await res.text();
+            document.getElementById("finalsum").innerHTML = ans;
+            }
+    
+    </script>
+
+<body>
+    <input id ="firstnumber" type = "text" , placeholder="First Number"> </input>
+    <br></br>
+
+    <input id ="secondnumber" type = "text" , placeholder="2nd Number"></input>
+    <br></br>
+
+    <button onclick="populatediv2()">CALCULATE SUM</button>
+    <div id = "finalsum"></div>
+</body>
+</html>

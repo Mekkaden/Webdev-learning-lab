@@ -1,0 +1,2 @@
+So dom is literally everything u see when u go to a site and hit inspect and inside it all the html code is called dom;
+we are using dom to manipulate and uses website dynamically we re using javascript to apppend new html code dynamically after the site is loaded.
