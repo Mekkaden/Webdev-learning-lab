@@ -1,0 +1,58 @@
+<body>
+  <input type="text" id="title" placeholder="Todo title" />
+  <br /><br />
+
+  <input type="text" id="description" placeholder="Todo description" />
+  <br /><br />
+
+  <button onclick="addTodo()">Add todo</button>
+  <br /><br />
+
+  <div id="todos"></div>
+</body>
+
+<script>
+  let globalId = 1;
+
+  function markAsDone(todoId) {
+    const todoContainer = document.getElementById(todoId);
+    todoContainer.children[2].innerHTML = "Done!";
+  }
+
+  function createChild(title, description, id) {
+    const todoContainer = document.createElement("div"); //just creates in  memory, nothing else;
+
+    const titleDiv = document.createElement("div");
+    titleDiv.innerHTML = title;
+
+    const descriptionDiv = document.createElement("div");
+    descriptionDiv.innerHTML = description;
+
+    const markDoneButton = document.createElement("button");
+    markDoneButton.innerHTML = "Mark as done";
+    markDoneButton.setAttribute("onclick", `markAsDone(${id})`);
+
+    todoContainer.appendChild(titleDiv);
+    todoContainer.appendChild(descriptionDiv);
+    todoContainer.appendChild(markDoneButton);
+
+    todoContainer.setAttribute("id", id);
+    return todoContainer;
+  }
+
+  function addTodo() {
+    const title = document.getElementById("title").value;
+    const description = document.getElementById("description").value;
+    const todosContainer = document.getElementById("todos"); //the todo div is the parent
+
+    todosContainer.appendChild(createChild(title, description, globalId++));
+  }
+</script>
+
+
+<!-- 
+todos (div id="todos")          ← parent container
+└── todoContainer (div id=1)   ← one todo item
+    ├── titleDiv               ← title
+    ├── descriptionDiv         ← description
+    └── markDoneButton         ← button -->
