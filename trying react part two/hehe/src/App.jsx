@@ -22,7 +22,6 @@ function App() {
     }
   ]);
 
-  // ✅ NEW TODO FUNCTION (THIS IS THE KEY PART)
   function addTodo() {
     // This ... todos means all the todos  + this new todo
     setTodos([
@@ -35,6 +34,9 @@ function App() {
     ]);
   }
 
+
+  //  Now thist part is like given a current state , show the ui like this  
+  //Like its like telling react to show whats inside the div in the return statement;
   return (
     <div>
       <button onClick={addTodo}>Add new todo</button>
