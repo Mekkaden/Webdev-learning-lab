@@ -10,6 +10,7 @@ The purpose of this repo is to track my learning progress, practice concepts, an
 - Async/await and fetch API practice
 - Backend basics using Node.js and Express (as I progress)
 - Small learning exercises and demos
+- React
 
 ## Note
 This repository is meant for learning and experimentation.
