@@ -1,0 +1,44 @@
+<!---- This is a dynamic website using raw DOM manipulation and not using react but react's ideas ,  ie  : states , components and rerender-->
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="buttonParent">
+    </div>
+    
+    <script>
+    //U have defined the component even if we were using react we have to define it
+    /* defining the js object count */
+    //Here state is the object and count is the attribute
+      let state = {
+        count: 0
+      }
+
+      function onButtonPress() {
+        state.count++;
+        buttonComponentReRender()
+      }
+
+      //If we were using react we didnt had to write this  , react takes care of this
+      function buttonComponentReRender() {
+        document.getElementById("buttonParent").innerHTML = "";
+        //const component holds a dom node  
+        const component = buttonComponent(state.count);
+        console.log(component);
+        document.getElementById("buttonParent").appendChild(component);
+      }
+
+      // Here the button component returns a DOM node (HTML) , IT returns the button
+      //This even if we r using react we should take care of, react doestn handle this , react handles the rerender
+      function buttonComponent(count) {
+        const button = document.createElement("button");
+        button.innerHTML = `Counter ${count}`;
+        button.setAttribute("onclick", `onButtonPress()`);
+        // this just sets an HTML Attribute like this <button onclick="onButtonPress()">Counter</button>
+        return button;
+      }
+
+      //this is the first render , this is even done is react. The first render must be done
+      buttonComponentReRender();
+    </script>
+  </body>
+</html>

@@ -10,8 +10,8 @@ const userAuth = (req, res, next) => {
         return res.status(403).json({ message: 'Authorization header missing' });
     }
 
-    // Split "Bearer <token>" to get the token
-    const token = authHeader.split(' ')[1];
+    // Split "Bearer <token>" to get the token like its saying put the token as the first element and the bearer as the second element  
+    const token = authHeader.split(' ')[1]; 
 
     if (!token) {
         return res.status(403).json({ message: 'Token missing' });
@@ -20,9 +20,10 @@ const userAuth = (req, res, next) => {
     try {
         // Verify the token using JWT_SECRET
         const decoded = jwt.verify(token, JWT_SECRET);
-
+        //now we r extracting the username from the json token 
         // Attach username to request object for use in routes
         req.username = decoded.username;
+        //It says alright Go forward to your route
         next();
     } catch (error) {
         return res.status(403).json({ message: 'Invalid or expired token' });

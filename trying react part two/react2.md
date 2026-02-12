@@ -1,0 +1,3 @@
+-Whats a state : its an Object in a site that is dynamic like it changes the thing that changes is called a state
+-Whats a component , its a dom element rendered on screen
+-A state change triggers re - render , re render means dom manipulation happenig when a state changes , we humans have to update the state and react takes care of rerendering
